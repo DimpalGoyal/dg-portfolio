@@ -1,25 +1,46 @@
+import { motion } from "framer-motion"
 import { GitHubIcon, LinkedInIcon, XIcon, profileImage } from "../icons"
 import ExpandableButton from "../components/ExpandableButton"
+import { containerVariants, itemVariants } from "../animations"
 
 function About() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        <img
+        <motion.img
           src={profileImage}
           alt="Profile"
           className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover ring-2 ring-ring-custom"
+          initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
         />
-        <div className="text-center md:text-left">
-          <h1 className="text-5xl font-bold tracking-tight transition-transform duration-300 hover:scale-[1.02]">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="text-center md:text-left"
+        >
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl font-bold tracking-tight transition-transform duration-300 hover:scale-[1.02]"
+          >
             Dimpal Goyal{" "}
             <span className="text-xl text-on-surface-muted font-normal">· he/him</span>
-          </h1>
-          <p className="mt-2 text-lg text-on-surface-muted">Software Engineer</p>
-          <p className="mt-6 max-w-md text-on-surface-body leading-relaxed">
+          </motion.h1>
+          <motion.p variants={itemVariants} className="mt-4 text-lg text-on-surface-muted">
+            Software Engineer
+          </motion.p>
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 max-w-md text-on-surface-body leading-relaxed"
+          >
             Building software that makes a difference. Passionate about clean code and elegant solutions.
-          </p>
-          <div className="mt-8 flex items-center justify-start gap-4">
+          </motion.p>
+          <motion.div
+            variants={itemVariants}
+            className="mt-8 flex items-center justify-start gap-4"
+          >
             <ExpandableButton
               href="https://github.com/DimpalGoyal"
               icon={<GitHubIcon />}
@@ -35,8 +56,8 @@ function About() {
               icon={<XIcon />}
               label="X"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   )
