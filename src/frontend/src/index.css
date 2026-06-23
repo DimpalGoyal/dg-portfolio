@@ -24,6 +24,8 @@
   --ring-custom: #d4d4d4;
   --active-bg: #000000;
   --active-text: #ffffff;
+  --shadow-heading: 0 1px 0 rgba(0,0,0,0.12);
+  --shadow-body: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 [data-theme="dark"] {
@@ -37,4 +39,14 @@
   --ring-custom: #404040;
   --active-bg: #ffffff;
   --active-text: #000000;
+  --shadow-heading: none;
+  --shadow-body: none;
+}
+
+h1, h2, h3, h4 {
+  text-shadow: var(--shadow-heading);
+}
+
+p, li {
+  text-shadow: var(--shadow-body);
 }

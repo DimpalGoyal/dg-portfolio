@@ -1,7 +1,8 @@
 import { motion } from "framer-motion"
-import { GitHubIcon, LinkedInIcon, XIcon, profileImage } from "../icons"
+import { profileImage } from "../icons"
 import ExpandableButton from "../components/ExpandableButton"
 import { containerVariants, itemVariants } from "../animations"
+import { socials } from "../config/socials.tsx"
 
 function About() {
   return (
@@ -28,34 +29,35 @@ function About() {
             Dimpal Goyal{" "}
             <span className="text-xl text-on-surface-muted font-normal">· he/him</span>
           </motion.h1>
-          <motion.p variants={itemVariants} className="mt-4 text-lg text-on-surface-muted">
-            Software Engineer
+          <motion.p
+            whileHover={{
+              scale: 1.01,
+              textShadow: "0 8px 30px rgba(0,0,0,0.12)",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+            variants={itemVariants}
+            className="mt-4 text-lg text-on-surface-muted"
+          >
+            Web Developer
           </motion.p>
           <motion.p
+            whileHover={{
+              scale: 1.01,
+              textShadow: "0 8px 30px rgba(0,0,0,0.12)",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
             variants={itemVariants}
             className="mt-6 max-w-md text-on-surface-body leading-relaxed"
           >
-            Building software that makes a difference. Passionate about clean code and elegant solutions.
+            Currently building web applications while learning about artificial intelligence, system design, and scalable software. I enjoy experimenting with new ideas and using AI-powered tools to learn and build faster.
           </motion.p>
           <motion.div
             variants={itemVariants}
-            className="mt-8 flex items-center justify-start gap-4"
+            className="mt-8 flex items-center justify-center md:justify-start gap-4"
           >
-            <ExpandableButton
-              href="https://github.com/DimpalGoyal"
-              icon={<GitHubIcon />}
-              label="GitHub"
-            />
-            <ExpandableButton
-              href="https://www.linkedin.com/in/dimpal-goyal-5136b3335/"
-              icon={<LinkedInIcon />}
-              label="LinkedIn"
-            />
-            <ExpandableButton
-              href="https://x.com/dimpalgoyal129"
-              icon={<XIcon />}
-              label="X"
-            />
+            {socials.map((s) => (
+              <ExpandableButton key={s.label} href={s.href} icon={s.icon} label={s.label} />
+            ))}
           </motion.div>
         </motion.div>
       </div>

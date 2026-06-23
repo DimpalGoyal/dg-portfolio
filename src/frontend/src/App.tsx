@@ -11,7 +11,7 @@ function App() {
   const gradient =
     theme === "dark"
       ? "radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%), linear-gradient(to bottom right, #0a0a0a, #18181b, #0a0a0a)"
-      : "radial-gradient(ellipse at center, rgba(0,0,0,0.02) 0%, transparent 70%), linear-gradient(to bottom right, #fafafa, #ffffff, #fafafa)"
+      : "radial-gradient(ellipse at center, rgba(0,0,0,0.08) 0%, transparent 50%), linear-gradient(to bottom right, #fafafa, #ffffff, #fafafa)"
 
   return (
     <div
