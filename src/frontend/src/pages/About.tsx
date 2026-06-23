@@ -1,4 +1,5 @@
 import { GitHubIcon, LinkedInIcon, XIcon, profileImage } from "../icons"
+import ExpandableButton from "../components/ExpandableButton"
 
 function About() {
   return (
@@ -18,31 +19,22 @@ function About() {
           <p className="mt-6 max-w-md text-on-surface-body leading-relaxed">
             Building software that makes a difference. Passionate about clean code and elegant solutions.
           </p>
-          <div className="mt-8 flex items-center justify-center md:justify-start gap-6">
-            <a
+          <div className="mt-8 flex items-center justify-start gap-4">
+            <ExpandableButton
               href="https://github.com/DimpalGoyal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-surface-muted hover:text-on-surface transition-all duration-200 hover:scale-110 inline-block"
-            >
-              <GitHubIcon />
-            </a>
-            <a
+              icon={<GitHubIcon />}
+              label="GitHub"
+            />
+            <ExpandableButton
               href="https://www.linkedin.com/in/dimpal-goyal-5136b3335/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-surface-muted hover:text-on-surface transition-all duration-200 hover:scale-110 inline-block"
-            >
-              <LinkedInIcon />
-            </a>
-            <a
+              icon={<LinkedInIcon />}
+              label="LinkedIn"
+            />
+            <ExpandableButton
               href="https://x.com/dimpalgoyal129"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-surface-muted hover:text-on-surface transition-all duration-200 hover:scale-110 inline-block"
-            >
-              <XIcon />
-            </a>
+              icon={<XIcon />}
+              label="X"
+            />
           </div>
         </div>
       </div>
