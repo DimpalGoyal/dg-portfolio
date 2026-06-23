@@ -1,1 +1,34 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+
+@theme {
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-hover: var(--surface-hover);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-body: var(--on-surface-body);
+  --color-on-surface-muted: var(--on-surface-muted);
+  --color-border-custom: var(--border-custom);
+  --color-ring-custom: var(--ring-custom);
+}
+
+:root {
+  --surface: #fafafa;
+  --surface-secondary: #ffffff;
+  --surface-hover: #e5e5e5;
+  --on-surface: #171717;
+  --on-surface-body: #525252;
+  --on-surface-muted: #a3a3a3;
+  --border-custom: #e5e5e5;
+  --ring-custom: #d4d4d4;
+}
+
+[data-theme="dark"] {
+  --surface: #0a0a0a;
+  --surface-secondary: #18181b;
+  --surface-hover: #262626;
+  --on-surface: #ffffff;
+  --on-surface-body: #d4d4d4;
+  --on-surface-muted: #a3a3a3;
+  --border-custom: #262626;
+  --ring-custom: #404040;
+}
