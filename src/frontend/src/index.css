@@ -9,6 +9,8 @@
   --color-on-surface-muted: var(--on-surface-muted);
   --color-border-custom: var(--border-custom);
   --color-ring-custom: var(--ring-custom);
+  --color-active-bg: var(--active-bg);
+  --color-active-text: var(--active-text);
 }
 
 :root {
@@ -20,6 +22,8 @@
   --on-surface-muted: #a3a3a3;
   --border-custom: #e5e5e5;
   --ring-custom: #d4d4d4;
+  --active-bg: #000000;
+  --active-text: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -31,4 +35,6 @@
   --on-surface-muted: #a3a3a3;
   --border-custom: #262626;
   --ring-custom: #404040;
+  --active-bg: #ffffff;
+  --active-text: #000000;
 }

@@ -6,6 +6,7 @@ import { MoonIcon, SunIcon } from "../icons"
 const links = [
   { to: "/", label: "About" },
   { to: "/projects", label: "Projects" },
+  { to: "/skills", label: "Skills" },
 ]
 
 function Navbar() {
@@ -14,8 +15,8 @@ function Navbar() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <nav className="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-border-custom">
-      <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+    <nav className="sticky top-3 z-50 mx-4 sm:mx-auto sm:max-w-5xl rounded-2xl shadow-lg bg-surface/80 backdrop-blur-md border border-border-custom">
+      <div className="px-4 h-16 flex items-center justify-between">
         <Link to="/" className="text-xl font-bold tracking-tight text-on-surface">
           DG
         </Link>
@@ -25,10 +26,10 @@ function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className={`relative text-sm font-medium transition-colors duration-200 after:absolute after:-bottom-[2px] after:left-0 after:h-[2px] after:bg-on-surface after:transition-all after:duration-300 ${
+              className={`text-sm font-medium transition-colors duration-200 px-3 py-1.5 rounded-lg ${
                 pathname === link.to
-                  ? "text-on-surface after:w-full"
-                  : "text-on-surface-muted hover:text-on-surface after:w-0 hover:after:w-full"
+                  ? "bg-active-bg text-active-text"
+                  : "text-on-surface-muted hover:bg-on-surface/[0.03] hover:text-on-surface"
               }`}
             >
               {link.label}
@@ -88,10 +89,10 @@ function Navbar() {
               key={link.to}
               to={link.to}
               onClick={() => setOpen(false)}
-              className={`text-sm font-medium transition-colors duration-200 ${
+              className={`text-sm font-medium transition-colors duration-200 px-3 py-1.5 rounded-lg ${
                 pathname === link.to
-                  ? "text-on-surface"
-                  : "text-on-surface-muted hover:text-on-surface"
+                  ? "bg-active-bg text-active-text"
+                  : "text-on-surface-muted hover:bg-on-surface/[0.03] hover:text-on-surface"
               }`}
             >
               {link.label}
