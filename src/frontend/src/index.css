@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-surface: var(--surface);
   --color-surface-secondary: var(--surface-secondary);
@@ -24,6 +28,7 @@
   --ring-custom: #d4d4d4;
   --active-bg: #000000;
   --active-text: #ffffff;
+  --card-glow: 0 4px 20px rgba(0,0,0,0.08);
   --shadow-heading: 0 1px 0 rgba(0,0,0,0.12);
   --shadow-body: 0 1px 3px rgba(0,0,0,0.06);
 }
@@ -39,6 +44,7 @@
   --ring-custom: #404040;
   --active-bg: #ffffff;
   --active-text: #000000;
+  --card-glow: 0 0 24px rgba(255,255,255,0.04);
   --shadow-heading: none;
   --shadow-body: none;
 }

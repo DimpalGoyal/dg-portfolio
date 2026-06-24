@@ -1,9 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import { useTheme } from "./context/ThemeContext"
 import Navbar from "./components/Navbar"
-import About from "./pages/About"
-import Projects from "./pages/Projects"
-import Skills from "./pages/Skills"
+import Home from "./pages/Home"
 
 function App() {
   const { theme } = useTheme()
@@ -20,9 +18,7 @@ function App() {
     >
       <Navbar />
       <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/skills" element={<Skills />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   )

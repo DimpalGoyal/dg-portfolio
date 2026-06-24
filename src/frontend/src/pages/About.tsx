@@ -1,12 +1,13 @@
 import { motion } from "framer-motion"
 import { profileImage } from "../icons"
 import ExpandableButton from "../components/ExpandableButton"
+import ScrollIndicator from "../components/ScrollIndicator"
 import { containerVariants, itemVariants } from "../animations"
 import { socials } from "../config/socials.tsx"
 
 function About() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <section id="about" className="relative min-h-screen flex items-center justify-center px-4">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <motion.img
           src={profileImage}
@@ -61,7 +62,8 @@ function About() {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+      <ScrollIndicator />
+    </section>
   )
 }
 

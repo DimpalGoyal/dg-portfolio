@@ -3,19 +3,22 @@ import { containerVariants, itemVariants } from "../animations"
 
 function Skills() {
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="min-h-screen flex items-center justify-center px-4"
-    >
+    <section id="skills">
       <motion.div
-        variants={itemVariants}
-        className="rounded-2xl border border-border-custom bg-surface-secondary p-8 shadow-sm"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="min-h-screen flex items-center justify-center px-4"
       >
-        <p className="text-on-surface-muted text-lg">Loading...</p>
+        <motion.div
+          variants={itemVariants}
+          className="rounded-2xl border border-border-custom bg-surface-secondary p-8 shadow-sm"
+        >
+          <p className="text-on-surface-muted text-lg">Loading...</p>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </section>
   )
 }
 

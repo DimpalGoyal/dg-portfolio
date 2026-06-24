@@ -1,24 +1,46 @@
-import { Link, useLocation } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
 import { useTheme } from "../context/ThemeContext"
 import { MoonIcon, SunIcon } from "../icons"
 
 const links = [
-  { to: "/", label: "About" },
-  { to: "/projects", label: "Projects" },
-  { to: "/skills", label: "Skills" },
+  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
 ]
 
 function Navbar() {
   const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
+  const [activeSection, setActiveSection] = useState("about")
   const { theme, toggleTheme } = useTheme()
 
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([])
   const [indicator, setIndicator] = useState({ left: 0, width: 0 })
 
   useEffect(() => {
-    const idx = links.findIndex((l) => l.to === pathname)
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]")
+      const scrollPosition = window.scrollY + 120
+
+      for (const section of sections) {
+        const el = section as HTMLElement
+        const sectionTop = el.offsetTop
+        const sectionHeight = el.offsetHeight
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(section.id)
+          break
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const idx = links.findIndex((l) => l.href.slice(1) === activeSection)
     const el = linkRefs.current[idx]
     if (el) {
       setIndicator({
@@ -26,14 +48,14 @@ function Navbar() {
         width: el.offsetWidth,
       })
     }
-  }, [pathname])
+  }, [activeSection])
 
   return (
     <nav className="sticky top-3 z-50 mx-4 sm:mx-auto sm:max-w-5xl rounded-2xl shadow-lg bg-surface/80 backdrop-blur-md border border-border-custom">
       <div className="px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight text-on-surface">
+        <a href="#about" className="text-xl font-bold tracking-tight text-on-surface">
           DG
-        </Link>
+        </a>
 
         <div className="hidden sm:flex items-center relative">
           <div
@@ -42,18 +64,18 @@ function Navbar() {
           />
           <div className="flex items-center gap-6">
             {links.map((link, i) => (
-              <Link
-                key={link.to}
-                to={link.to}
+              <a
+                key={link.href}
+                href={link.href}
                 ref={(el) => { linkRefs.current[i] = el }}
                 className={`relative z-10 text-sm font-medium transition-colors duration-200 px-3 py-1.5 rounded-lg ${
-                  pathname === link.to
+                  activeSection === link.href.slice(1)
                     ? "text-active-text"
                     : "text-on-surface-muted hover:bg-on-surface/[0.03] hover:text-on-surface"
                 }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -106,18 +128,18 @@ function Navbar() {
       >
         <div className="px-4 pb-4 flex flex-col gap-3">
           {links.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
+            <a
+              key={link.href}
+              href={link.href}
               onClick={() => setOpen(false)}
               className={`text-sm font-medium transition-colors duration-200 px-3 py-1.5 rounded-lg ${
-                pathname === link.to
+                activeSection === link.href.slice(1)
                   ? "bg-active-bg text-active-text"
                   : "text-on-surface-muted hover:bg-on-surface/[0.03] hover:text-on-surface"
               }`}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </div>
       </div>
