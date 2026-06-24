@@ -3,28 +3,12 @@ import { containerVariants, itemVariants } from "../animations"
 import ProjectCard from "../components/ProjectCard"
 import ScrollIndicator from "../components/ScrollIndicator"
 import { useProject } from "../hooks/useProject"
+import { projectConfigs } from "../config/projects"
 
 function Projects() {
-  const { project: p1 } = useProject({
-    title: "Portfolio Website",
-    description:
-      "A personal portfolio built with React, TypeScript, and Tailwind CSS to showcase projects and skills.",
-    techStack: ["React", "TypeScript", "Tailwind CSS"],
-  })
-
-  const { project: p2 } = useProject({
-    title: "E-Commerce Platform",
-    description:
-      "A full-stack e-commerce application with product management, cart functionality, and payment processing.",
-    techStack: ["React", "Node.js", "TypeScript"],
-  })
-
-  const { project: p3 } = useProject({
-    title: "AI Chat Application",
-    description:
-      "A real-time chat application powered by AI, featuring natural language processing and contextual responses.",
-    techStack: ["Python", "React", "Tailwind CSS"],
-  })
+  const { project: p1 } = useProject(projectConfigs[0])
+  const { project: p2 } = useProject(projectConfigs[1])
+  const { project: p3 } = useProject(projectConfigs[2])
 
   const allProjects = [p1, p2, p3].filter(Boolean)
 
