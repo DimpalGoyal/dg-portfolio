@@ -1,7 +1,9 @@
-import type { UseProjectInput } from "../hooks/useProject"
+import type { UseProjectInput } from "../hooks/useProject";
 
 export const projectConfigs: UseProjectInput[] = [
   {
+    github: "https://github.com/DimpalGoyal/dg-portfolio",
+    url: "https://dg-portfolio-smoky.vercel.app/",
     title: "Portfolio Website",
     description:
       "A personal portfolio built with React, TypeScript, and Tailwind CSS to showcase projects and skills.",
@@ -19,4 +21,4 @@ export const projectConfigs: UseProjectInput[] = [
       "A real-time chat application powered by AI, featuring natural language processing and contextual responses.",
     techStack: ["Python", "React", "Tailwind CSS"],
   },
-]
+];
