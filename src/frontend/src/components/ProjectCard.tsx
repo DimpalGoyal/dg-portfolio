@@ -10,13 +10,14 @@ interface TechItem {
 
 interface Props {
   thumbnailGradient: string
+  thumbnailUrl?: string
   title: string
   description: string
   techStack: TechItem[]
   href?: string
 }
 
-function ProjectCard({ thumbnailGradient, title, description, techStack, href }: Props) {
+function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, techStack, href }: Props) {
   const card = (
     <motion.div
       variants={itemVariants}
@@ -27,7 +28,16 @@ function ProjectCard({ thumbnailGradient, title, description, techStack, href }:
         href ? "transition-transform duration-300 hover:scale-[1.02] cursor-pointer" : ""
       }`}
     >
-      <div className={`w-full aspect-video ${thumbnailGradient}`} />
+      <div className={`w-full aspect-video relative ${thumbnailGradient}`}>
+        {thumbnailUrl && (
+          <img
+            src={thumbnailUrl}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+        )}
+      </div>
       <div className="p-5 space-y-4">
         <h3 className="text-xl font-semibold tracking-tight text-on-surface">{title}</h3>
         <p className="text-sm text-on-surface-body leading-relaxed">{description}</p>

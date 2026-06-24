@@ -1,4 +1,4 @@
-import type { UseProjectInput } from "../hooks/useProject";
+import type { UseProjectInput } from "../hooks/useProject"
 
 export const projectConfigs: UseProjectInput[] = [
   {
@@ -21,4 +21,4 @@ export const projectConfigs: UseProjectInput[] = [
       "A real-time chat application powered by AI, featuring natural language processing and contextual responses.",
     techStack: ["Python", "React", "Tailwind CSS"],
   },
-];
+]

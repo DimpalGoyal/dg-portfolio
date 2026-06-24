@@ -16,6 +16,7 @@ interface TechItem {
 
 export interface ProjectData {
   thumbnailGradient: string;
+  thumbnailUrl?: string;
   title: string;
   description: string;
   techStack: TechItem[];
@@ -78,6 +79,19 @@ function getGradient(language: string): string {
   return languageGradients[language.toLowerCase()] ?? defaultGradient;
 }
 
+async function fetchOGImage(url: string): Promise<string | null> {
+  try {
+    const res = await fetch(
+      `https://api.microlink.io/?url=${encodeURIComponent(url)}`,
+    )
+    if (!res.ok) return null
+    const data = await res.json()
+    return data?.data?.image?.url ?? null
+  } catch {
+    return null
+  }
+}
+
 function parseGithubUrl(url: string): { owner: string; repo: string } | null {
   const match = url.match(/github\.com\/([^/]+)\/([^/#?]+)/);
   if (!match) return null;
@@ -90,6 +104,7 @@ export function useProject(input: UseProjectInput): UseProjectResult {
   const [project, setProject] = useState<ProjectData | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [thumbnailUrl, setThumbnailUrl] = useState<string | undefined>()
 
   useEffect(() => {
     let cancelled = false
@@ -183,5 +198,25 @@ export function useProject(input: UseProjectInput): UseProjectResult {
     }
   }, [github, url, explicitTitle, explicitDesc, techStackKey])
 
-  return { project, loading, error }
+  useEffect(() => {
+    if (!url) {
+      setThumbnailUrl(undefined)
+      return
+    }
+
+    let cancelled = false
+
+    fetchOGImage(url).then((img) => {
+      if (!cancelled) {
+        setThumbnailUrl(img ?? undefined)
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [url])
+
+  const result = project ? { ...project, thumbnailUrl } : null
+  return { project: result, loading, error }
 }
