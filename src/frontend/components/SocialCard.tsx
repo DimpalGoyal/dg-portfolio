@@ -13,7 +13,7 @@ function SocialCard({ href, icon, username, color }: Props) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="social-card group flex items-center gap-2.5 rounded-2xl border border-ring-custom px-3 py-2.5 transition-all duration-300 cursor-pointer hover:border-[var(--brand)]"
+      className="social-card group flex items-center gap-2.5 rounded-2xl border border-ring-custom px-3 py-2.5 transition-all duration-300 cursor-pointer hover:border-[var(--brand)] hover:-translate-y-1"
       style={{ "--brand": color } as React.CSSProperties}
     >
       <span className="shrink-0 flex items-center justify-center w-7 h-7 text-on-surface-body transition-colors duration-300 group-hover:text-[var(--brand)]">

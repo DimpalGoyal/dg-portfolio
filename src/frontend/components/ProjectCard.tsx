@@ -26,8 +26,8 @@ function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, tech
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`rounded-2xl border border-border-custom bg-surface-secondary overflow-hidden shadow-[var(--card-glow)] ${
-        href ? "transition-transform duration-300 hover:scale-[1.02] cursor-pointer" : ""
+      className={`rounded-2xl border border-border-custom bg-surface-secondary overflow-hidden shadow-[var(--card-glow)] transition-all duration-300 ${
+        href ? "hover:-translate-y-1 hover:shadow-[var(--card-glow)]/80 cursor-pointer" : ""
       }`}
     >
       <div className={`w-full aspect-video relative ${thumbnailGradient}`}>

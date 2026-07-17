@@ -53,8 +53,8 @@ function Navbar() {
   }, [activeSection]);
 
   return (
-    <nav className="sticky top-3 z-50 mx-4 sm:mx-auto sm:max-w-5xl rounded-2xl shadow-lg bg-surface/80 backdrop-blur-md border border-border-custom">
-      <div className="px-4 h-16 flex items-center justify-between">
+    <nav className="sticky top-3 z-50 mx-4 sm:mx-auto sm:max-w-5xl rounded-2xl shadow-md bg-surface/80 backdrop-blur-md border border-border-custom">
+      <div className="px-4 h-14 flex items-center justify-between">
         <a href="#about" className="text-xl font-bold tracking-tight text-on-surface">
           DG
         </a>
@@ -83,20 +83,24 @@ function Navbar() {
 
           <button
             onClick={toggleTheme}
-            className="ml-6 text-on-surface-muted hover:text-on-surface transition-colors duration-200 p-1.5"
+            className="ml-6 text-on-surface-muted hover:text-on-surface transition-all duration-500 p-1.5"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
-            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+            <span className={`block transition-transform duration-500 ${theme === "dark" ? "rotate-180" : "rotate-0"}`}>
+              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+            </span>
           </button>
         </div>
 
         <div className="sm:hidden flex items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="text-on-surface-muted hover:text-on-surface transition-colors duration-200 p-1.5"
+            className="text-on-surface-muted hover:text-on-surface transition-all duration-500 p-1.5"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
-            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+            <span className={`block transition-transform duration-500 ${theme === "dark" ? "rotate-180" : "rotate-0"}`}>
+              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+            </span>
           </button>
 
           <button

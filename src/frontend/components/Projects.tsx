@@ -48,7 +48,7 @@ function Projects({ projects }: Props) {
       >
         <motion.h2
           variants={itemVariants}
-          className="text-4xl font-bold tracking-tight text-on-surface"
+          className="text-5xl font-semibold tracking-tight text-on-surface"
         >
           Projects
         </motion.h2>

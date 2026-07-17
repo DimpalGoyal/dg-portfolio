@@ -2,6 +2,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @theme {
@@ -29,8 +31,6 @@ html {
   --active-bg: #000000;
   --active-text: #ffffff;
   --card-glow: 0 4px 20px rgba(0,0,0,0.08);
-  --shadow-heading: 0 1px 0 rgba(0,0,0,0.12);
-  --shadow-body: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 [data-theme="dark"] {
@@ -45,16 +45,6 @@ html {
   --active-bg: #ffffff;
   --active-text: #000000;
   --card-glow: 0 0 24px rgba(255,255,255,0.04);
-  --shadow-heading: none;
-  --shadow-body: none;
-}
-
-h1, h2, h3, h4 {
-  text-shadow: var(--shadow-heading);
-}
-
-p, li {
-  text-shadow: var(--shadow-body);
 }
 
 .text-gradient-dark {
@@ -83,8 +73,35 @@ p, li {
 
 :root {
   --dot-color: rgba(0, 0, 0, 0.07);
+  --dash-color: rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="dark"] {
   --dot-color: rgba(255, 255, 255, 0.03);
+  --dash-color: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes travel {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+
+.rotate-dashes {
+  position: absolute;
+  inset: -3px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.dash {
+  position: absolute;
+  width: 10px;
+  height: 3px;
+  background: var(--dash-color);
+  border-radius: 2px;
+  top: -1px;
+  left: -1px;
+  offset-path: inset(-3px round 16px);
+  offset-rotate: auto;
+  animation: travel 4s linear infinite;
 }

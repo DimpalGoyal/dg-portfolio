@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/context/ThemeContext";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Dimpal Goyal | Full Stack & AI Developer",
@@ -37,7 +40,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <head>
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="preconnect" href="https://api.microlink.io" />
+      </head>
+      <body className={inter.className}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -1,12 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { profileImage } from "@/components/icons";
 import SocialCard from "@/components/SocialCard";
 import ScrollIndicator from "@/components/ScrollIndicator";
+import RotatingTitle from "@/components/RotatingTitle";
 import { containerVariants, itemVariants } from "@/lib/animations";
 import { socials } from "@/lib/config/socials";
 import { useTheme } from "@/lib/context/ThemeContext";
+
+const titles = ["Web Developer", "Learning AI", "Curious Learner"];
 
 function About() {
   const { theme } = useTheme();
@@ -14,14 +18,28 @@ function About() {
   return (
     <section id="about" className="relative min-h-screen flex items-center justify-center px-4">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-14">
-        <motion.img
-          src={profileImage}
-          alt="Profile"
-          className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover ring-2 ring-transparent shadow-[0_0_40px_rgba(255,255,255,0.06)]"
-          initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-        />
+        <div className="relative w-36 h-36 md:w-44 md:h-44 shrink-0">
+          <div className="rotate-dashes">
+            <span className="dash" style={{ animationDelay: "0s" }} />
+            <span className="dash" style={{ animationDelay: "1s" }} />
+            <span className="dash" style={{ animationDelay: "2s" }} />
+            <span className="dash" style={{ animationDelay: "3s" }} />
+          </div>
+          <motion.div
+            className="relative w-full h-full rounded-2xl overflow-hidden z-10"
+            initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            <Image
+              src={profileImage}
+              alt="Profile"
+              fill
+              sizes="(max-width: 768px) 144px, 176px"
+              className="object-cover"
+            />
+          </motion.div>
+        </div>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -30,16 +48,13 @@ function About() {
         >
           <motion.h1
             variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
             className={`text-6xl md:text-7xl font-bold tracking-tight ${theme === "dark" ? "text-gradient-dark" : "text-gradient-light"}`}
           >
             Dimpal Goyal
           </motion.h1>
-          <motion.p
-            variants={itemVariants}
-            className="mt-3 text-xl text-on-surface-muted font-normal tracking-wide"
-          >
-            Web Developer
-          </motion.p>
+          <RotatingTitle titles={titles} />
           <motion.p
             variants={itemVariants}
             className="mt-6 max-w-md text-on-surface-body leading-relaxed"
