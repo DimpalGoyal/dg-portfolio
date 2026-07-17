@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import ThemeWrapper from "@/components/ThemeWrapper";
+import PageBorder from "@/components/PageBorder";
 import { fetchAllProjects } from "@/lib/hooks/fetchProjects";
 import { projectConfigs } from "@/lib/config/projects";
 
@@ -11,6 +12,7 @@ export default async function Home() {
 
   return (
     <ThemeWrapper>
+      <PageBorder />
       <Navbar />
       <About />
       <Projects projects={projects} />

@@ -12,10 +12,10 @@ function ThemeWrapper({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="min-h-screen text-on-surface"
+      className="relative min-h-screen text-on-surface bg-dots"
       style={{ backgroundImage: gradient }}
     >
-      {children}
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }
