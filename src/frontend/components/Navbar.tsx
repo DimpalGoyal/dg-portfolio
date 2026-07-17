@@ -1,54 +1,56 @@
-import { useEffect, useRef, useState } from "react"
-import { useTheme } from "../context/ThemeContext"
-import { MoonIcon, SunIcon } from "../icons"
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useTheme } from "@/lib/context/ThemeContext";
+import { MoonIcon, SunIcon } from "@/components/icons";
 
 const links = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
-]
+];
 
 function Navbar() {
-  const [open, setOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("about")
-  const { theme, toggleTheme } = useTheme()
+  const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
+  const { theme, toggleTheme } = useTheme();
 
-  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([])
-  const [indicator, setIndicator] = useState({ left: 0, width: 0 })
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll("section[id]")
-      const scrollPosition = window.scrollY + 120
+      const sections = document.querySelectorAll("section[id]");
+      const scrollPosition = window.scrollY + 120;
 
       for (const section of sections) {
-        const el = section as HTMLElement
-        const sectionTop = el.offsetTop
-        const sectionHeight = el.offsetHeight
+        const el = section as HTMLElement;
+        const sectionTop = el.offsetTop;
+        const sectionHeight = el.offsetHeight;
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(section.id)
-          break
+          setActiveSection(section.id);
+          break;
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
-    const idx = links.findIndex((l) => l.href.slice(1) === activeSection)
-    const el = linkRefs.current[idx]
+    const idx = links.findIndex((l) => l.href.slice(1) === activeSection);
+    const el = linkRefs.current[idx];
     if (el) {
       setIndicator({
         left: el.offsetLeft,
         width: el.offsetWidth,
-      })
+      });
     }
-  }, [activeSection])
+  }, [activeSection]);
 
   return (
     <nav className="sticky top-3 z-50 mx-4 sm:mx-auto sm:max-w-5xl rounded-2xl shadow-lg bg-surface/80 backdrop-blur-md border border-border-custom">
@@ -67,7 +69,7 @@ function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                ref={(el) => { linkRefs.current[i] = el }}
+                ref={(el) => { linkRefs.current[i] = el; }}
                 className={`relative z-10 text-sm font-medium transition-colors duration-200 px-3 py-1.5 rounded-lg ${
                   activeSection === link.href.slice(1)
                     ? "text-active-text"
@@ -144,7 +146,7 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

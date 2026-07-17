@@ -1,5 +1,7 @@
-import { motion } from "framer-motion"
-import { ChevronDownIcon } from "../icons"
+"use client";
+
+import { motion } from "framer-motion";
+import { ChevronDownIcon } from "@/components/icons";
 
 function ScrollIndicator() {
   return (
@@ -10,7 +12,7 @@ function ScrollIndicator() {
     >
       <ChevronDownIcon />
     </motion.div>
-  )
+  );
 }
 
-export default ScrollIndicator
+export default ScrollIndicator;

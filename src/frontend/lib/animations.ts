@@ -1,11 +1,11 @@
-import type { Variants } from "framer-motion"
+import type { Variants } from "framer-motion";
 
 export const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.18 },
   },
-}
+};
 
 export const itemVariants: Variants = {
   hidden: {
@@ -22,4 +22,4 @@ export const itemVariants: Variants = {
       ease: "easeInOut",
     },
   },
-}
+};

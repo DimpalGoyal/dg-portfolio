@@ -1,20 +1,22 @@
-import { motion } from "framer-motion"
-import type { ReactNode } from "react"
-import ExpandableButton from "./ExpandableButton"
-import { itemVariants } from "../animations"
+"use client";
+
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+import ExpandableButton from "./ExpandableButton";
+import { itemVariants } from "@/lib/animations";
 
 interface TechItem {
-  icon: ReactNode
-  label: string
+  icon: ReactNode;
+  label: string;
 }
 
 interface Props {
-  thumbnailGradient: string
-  thumbnailUrl?: string
-  title: string
-  description: string
-  techStack: TechItem[]
-  href?: string
+  thumbnailGradient: string;
+  thumbnailUrl?: string;
+  title: string;
+  description: string;
+  techStack: TechItem[];
+  href?: string;
 }
 
 function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, techStack, href }: Props) {
@@ -48,17 +50,17 @@ function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, tech
         </div>
       </div>
     </motion.div>
-  )
+  );
 
   if (href) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className="block">
         {card}
       </a>
-    )
+    );
   }
 
-  return card
+  return card;
 }
 
-export default ProjectCard
+export default ProjectCard;

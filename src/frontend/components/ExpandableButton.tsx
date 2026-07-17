@@ -1,15 +1,15 @@
-import { type ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface Props {
-  icon: ReactNode
-  label: string
-  href?: string
-  onClick?: () => void
+  icon: ReactNode;
+  label: string;
+  href?: string;
+  onClick?: () => void;
 }
 
 function ExpandableButton({ icon, label, href, onClick }: Props) {
   const base =
-    "group flex items-center gap-2 rounded-2xl border border-border-custom px-2 py-2 text-on-surface-muted hover:text-on-surface hover:border-on-surface hover:bg-surface-hover transition-all duration-700 cursor-pointer"
+    "group flex items-center gap-2 rounded-2xl border border-border-custom px-2 py-2 text-on-surface-muted hover:text-on-surface hover:border-on-surface hover:bg-surface-hover transition-all duration-700 cursor-pointer";
 
   const content = (
     <>
@@ -20,21 +20,21 @@ function ExpandableButton({ icon, label, href, onClick }: Props) {
         {label}
       </span>
     </>
-  )
+  );
 
   if (href) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={base}>
         {content}
       </a>
-    )
+    );
   }
 
   return (
     <button onClick={onClick} className={base}>
       {content}
     </button>
-  )
+  );
 }
 
-export default ExpandableButton
+export default ExpandableButton;

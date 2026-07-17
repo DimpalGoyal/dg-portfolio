@@ -1,5 +1,7 @@
-import { motion } from "framer-motion"
-import { containerVariants, itemVariants } from "../animations"
+"use client";
+
+import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "@/lib/animations";
 
 function Skills() {
   return (
@@ -19,7 +21,7 @@ function Skills() {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }
 
-export default Skills
+export default Skills;

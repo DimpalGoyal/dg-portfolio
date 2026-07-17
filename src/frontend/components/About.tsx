@@ -1,18 +1,23 @@
-import { motion } from "framer-motion"
-import { profileImage } from "../icons"
-import ExpandableButton from "../components/ExpandableButton"
-import ScrollIndicator from "../components/ScrollIndicator"
-import { containerVariants, itemVariants } from "../animations"
-import { socials } from "../config/socials.tsx"
+"use client";
+
+import { motion } from "framer-motion";
+import { profileImage } from "@/components/icons";
+import SocialCard from "@/components/SocialCard";
+import ScrollIndicator from "@/components/ScrollIndicator";
+import { containerVariants, itemVariants } from "@/lib/animations";
+import { socials } from "@/lib/config/socials";
+import { useTheme } from "@/lib/context/ThemeContext";
 
 function About() {
+  const { theme } = useTheme();
+
   return (
     <section id="about" className="relative min-h-screen flex items-center justify-center px-4">
-      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-14">
         <motion.img
           src={profileImage}
           alt="Profile"
-          className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover ring-2 ring-ring-custom"
+          className="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover ring-2 ring-transparent shadow-[0_0_40px_rgba(255,255,255,0.06)]"
           initial={{ opacity: 0, y: 32, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -25,28 +30,17 @@ function About() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl font-bold tracking-tight transition-transform duration-300 hover:scale-[1.02]"
+            className={`text-6xl md:text-7xl font-bold tracking-tight ${theme === "dark" ? "text-gradient-dark" : "text-gradient-light"}`}
           >
-            Dimpal Goyal{" "}
-            <span className="text-xl text-on-surface-muted font-normal">· he/him</span>
+            Dimpal Goyal
           </motion.h1>
           <motion.p
-            whileHover={{
-              scale: 1.01,
-              textShadow: "0 8px 30px rgba(0,0,0,0.12)",
-            }}
-            transition={{ type: "spring", stiffness: 300 }}
             variants={itemVariants}
-            className="mt-4 text-lg text-on-surface-muted"
+            className="mt-3 text-xl text-on-surface-muted font-normal tracking-wide"
           >
             Web Developer
           </motion.p>
           <motion.p
-            whileHover={{
-              scale: 1.01,
-              textShadow: "0 8px 30px rgba(0,0,0,0.12)",
-            }}
-            transition={{ type: "spring", stiffness: 300 }}
             variants={itemVariants}
             className="mt-6 max-w-md text-on-surface-body leading-relaxed"
           >
@@ -57,14 +51,14 @@ function About() {
             className="mt-8 flex items-center justify-center md:justify-start gap-4"
           >
             {socials.map((s) => (
-              <ExpandableButton key={s.label} href={s.href} icon={s.icon} label={s.label} />
+              <SocialCard key={s.username} href={s.href} icon={s.icon} username={s.username} color={s.color} />
             ))}
           </motion.div>
         </motion.div>
       </div>
       <ScrollIndicator />
     </section>
-  )
+  );
 }
 
-export default About
+export default About;

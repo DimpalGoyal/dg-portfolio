@@ -56,3 +56,17 @@ h1, h2, h3, h4 {
 p, li {
   text-shadow: var(--shadow-body);
 }
+
+.text-gradient-dark {
+  background: linear-gradient(to right, #ffffff, #ffffff, #737373);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-light {
+  background: linear-gradient(to right, #171717, #171717, #737373);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
