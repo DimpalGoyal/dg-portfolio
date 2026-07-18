@@ -48,6 +48,29 @@ function getIcon(techName: string): ReactNode {
   return techIcons[key] ?? <CodeIcon />;
 }
 
+const techColors: Record<string, string> = {
+  react: "#61DAFB",
+  reactjs: "#61DAFB",
+  typescript: "#3178C6",
+  ts: "#3178C6",
+  tailwind: "#06B6D4",
+  tailwindcss: "#06B6D4",
+  node: "#339933",
+  nodejs: "#339933",
+  python: "#3776AB",
+  nextjs: "#000000",
+  motion: "#0055FF",
+  mongodb: "#47A248",
+  jwt: "#000000",
+  javascript: "#F7DF1E",
+  axios: "#5A29E4",
+};
+
+function getColor(techName: string): string | undefined {
+  const key = techName.toLowerCase().replace(/[\s.]+/g, "");
+  return techColors[key];
+}
+
 function Projects({ projects }: Props) {
   return (
     <section id="projects">
@@ -76,6 +99,7 @@ function Projects({ projects }: Props) {
               techStack={project.techNames.map((t) => ({
                 icon: getIcon(t),
                 label: t,
+                color: getColor(t),
               }))}
             />
           ))}

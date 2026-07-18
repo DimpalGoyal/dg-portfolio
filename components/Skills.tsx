@@ -3,6 +3,27 @@
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/lib/animations";
 import { skillCategories, type SkillCategory } from "@/lib/config/skills";
+import {
+  ReactIcon,
+  TypeScriptIcon,
+  TailwindIcon,
+  NodeIcon,
+  PythonIcon,
+  JavaScriptIcon,
+  NextJsIcon,
+  MotionIcon,
+  SqlIcon,
+  CppIcon,
+  CIcon,
+  GitIcon,
+  DockerIcon,
+  PostgreIcon,
+  VercelIcon,
+  LangChainIcon,
+  GeminiIcon,
+  CodeIcon,
+} from "@/components/icons";
+import type { ReactNode } from "react";
 
 function CategoryIcon({ icon }: { icon: SkillCategory["icon"] }) {
   const svgProps = {
@@ -49,6 +70,62 @@ function CategoryIcon({ icon }: { icon: SkillCategory["icon"] }) {
   }
 }
 
+const skillIcons: Record<string, ReactNode> = {
+  javascript: <JavaScriptIcon />,
+  typescript: <TypeScriptIcon />,
+  python: <PythonIcon />,
+  sql: <SqlIcon />,
+  "c++": <CppIcon />,
+  c: <CIcon />,
+  react: <ReactIcon />,
+  "next.js": <NextJsIcon />,
+  nextjs: <NextJsIcon />,
+  "node.js": <NodeIcon />,
+  nodejs: <NodeIcon />,
+  "tailwind css": <TailwindIcon />,
+  tailwindcss: <TailwindIcon />,
+  motion: <MotionIcon />,
+  git: <GitIcon />,
+  docker: <DockerIcon />,
+  postgresql: <PostgreIcon />,
+  vercel: <VercelIcon />,
+  langchain: <LangChainIcon />,
+  "gemini api": <GeminiIcon />,
+};
+
+const skillColors: Record<string, string> = {
+  javascript: "#F7DF1E",
+  typescript: "#3178C6",
+  python: "#3776AB",
+  sql: "#E38C00",
+  "c++": "#00599C",
+  c: "#A8B9CC",
+  react: "#61DAFB",
+  "next.js": "#000000",
+  nextjs: "#000000",
+  "node.js": "#339933",
+  nodejs: "#339933",
+  "tailwind css": "#06B6D4",
+  tailwindcss: "#06B6D4",
+  motion: "#0055FF",
+  git: "#F05032",
+  docker: "#2496ED",
+  postgresql: "#4169E1",
+  vercel: "#000000",
+  langchain: "#1C3C3C",
+  "gemini api": "#4285F4",
+};
+
+function getSkillIcon(name: string): ReactNode {
+  const key = name.toLowerCase().replace(/[\s.]+/g, "");
+  return skillIcons[key] ?? <CodeIcon />;
+}
+
+function getSkillColor(name: string): string | undefined {
+  const key = name.toLowerCase().replace(/[\s.]+/g, "");
+  return skillColors[key];
+}
+
 function SkillCard({ category }: { category: SkillCategory }) {
   return (
     <motion.div
@@ -65,14 +142,21 @@ function SkillCard({ category }: { category: SkillCategory }) {
         </h3>
       </div>
       <div className="flex flex-wrap gap-2">
-        {category.skills.map((skill) => (
-          <span
-            key={skill}
-            className="rounded-full border border-border-custom px-3 py-1 text-sm text-on-surface-body transition-all duration-200 hover:border-on-surface-muted hover:text-on-surface hover:-translate-y-0.5"
-          >
-            {skill}
-          </span>
-        ))}
+        {category.skills.map((skill) => {
+          const color = getSkillColor(skill);
+          return (
+            <span
+              key={skill}
+              className="group inline-flex items-center gap-1.5 rounded-full border border-border-custom px-3 py-1 text-sm text-on-surface-body transition-all duration-200 hover:border-on-surface-muted hover:text-on-surface hover:-translate-y-0.5"
+              style={{ '--brand': color } as React.CSSProperties}
+            >
+              <span className="w-4 h-4 shrink-0 transition-colors duration-200 group-hover:text-[var(--brand)] [&>svg]:w-full [&>svg]:h-full">
+                {getSkillIcon(skill)}
+              </span>
+              {skill}
+            </span>
+          );
+        })}
       </div>
     </motion.div>
   );

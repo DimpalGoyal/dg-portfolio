@@ -8,6 +8,7 @@ import { itemVariants } from "@/lib/animations";
 interface TechItem {
   icon: ReactNode;
   label: string;
+  color?: string;
 }
 
 interface Props {
@@ -26,7 +27,7 @@ function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, tech
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`flex flex-col rounded-2xl border border-border-custom bg-surface-secondary overflow-hidden shadow-[var(--card-glow)] transition-all duration-300 ${
+      className={`flex flex-col h-full rounded-2xl border border-border-custom bg-surface-secondary overflow-hidden shadow-[var(--card-glow)] transition-all duration-300 ${
         href ? "hover:-translate-y-1 hover:shadow-[var(--card-glow)]/80 cursor-pointer" : ""
       }`}
     >
@@ -45,7 +46,7 @@ function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, tech
         <p className="flex-1 text-sm text-on-surface-body leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-2">
           {techStack.map((tech) => (
-            <ExpandableButton key={tech.label} icon={tech.icon} label={tech.label} />
+            <ExpandableButton key={tech.label} icon={tech.icon} label={tech.label} color={tech.color} />
           ))}
         </div>
       </div>
@@ -54,7 +55,7 @@ function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, tech
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+      <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
         {card}
       </a>
     );

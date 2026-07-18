@@ -8,21 +8,21 @@ export const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
     icon: "code",
-    skills: ["Python", "JavaScript", "TypeScript", "SQL", "C++"],
+    skills: [ "JavaScript", "TypeScript", "Python","SQL", "C++", "C"],
   },
   {
     title: "Frameworks",
     icon: "layers",
-    skills: ["React", "Next.js", "Node.js", "FastAPI", "Tailwind CSS"],
+    skills: ["React", "Next.js", "Node.js", "Tailwind CSS", "motion"],
   },
   {
     title: "Tools",
     icon: "tool",
-    skills: ["Git", "Docker", "PostgreSQL", "Redis", "Vercel"],
+    skills: ["Git", "Docker", "PostgreSQL", "Vercel"],
   },
   {
     title: "AI/ML",
     icon: "brain",
-    skills: ["LangChain", "OpenAI API", "RAG", "NLP", "TensorFlow"],
+    skills: ["LangChain", "Gemini API",],
   },
 ];

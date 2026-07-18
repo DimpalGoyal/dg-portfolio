@@ -18,7 +18,7 @@ export const socials: SocialLink[] = [
   {
     href: "https://www.linkedin.com/in/dimpal-goyal-5136b3335/",
     icon: <LinkedInIcon />,
-    username: "dimpal-goyal-5136b3335",
+    username: "dimpal-goyal",
     color: "#0A66C2",
   },
   {
