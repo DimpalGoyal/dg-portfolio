@@ -13,6 +13,7 @@ export interface UseProjectInput {
   title?: string;
   description?: string;
   techStack?: string[];
+  thumbnailUrl?: string;
 }
 
 const languageGradients: Record<string, string> = {
@@ -60,7 +61,7 @@ function parseGithubUrl(url: string): { owner: string; repo: string } | null {
 }
 
 export async function fetchProject(input: UseProjectInput): Promise<ProjectData> {
-  const { github, url, title: explicitTitle, description: explicitDesc, techStack: explicitTech = [] } = input;
+  const { github, url, title: explicitTitle, description: explicitDesc, techStack: explicitTech = [], thumbnailUrl: explicitThumbnail } = input;
 
   if (!github) {
     return {
@@ -119,8 +120,8 @@ export async function fetchProject(input: UseProjectInput): Promise<ProjectData>
             ? [primaryLang]
             : [];
 
-    let thumbnailUrl: string | undefined = undefined;
-    if (url) {
+    let thumbnailUrl: string | undefined = explicitThumbnail;
+    if (!thumbnailUrl && url) {
       const img = await fetchOGImage(url);
       thumbnailUrl = img ?? undefined;
     }

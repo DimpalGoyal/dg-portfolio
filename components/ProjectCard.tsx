@@ -26,23 +26,23 @@ function ProjectCard({ thumbnailGradient, thumbnailUrl, title, description, tech
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className={`rounded-2xl border border-border-custom bg-surface-secondary overflow-hidden shadow-[var(--card-glow)] transition-all duration-300 ${
+      className={`flex flex-col rounded-2xl border border-border-custom bg-surface-secondary overflow-hidden shadow-[var(--card-glow)] transition-all duration-300 ${
         href ? "hover:-translate-y-1 hover:shadow-[var(--card-glow)]/80 cursor-pointer" : ""
       }`}
     >
-      <div className={`w-full aspect-video relative ${thumbnailGradient}`}>
+      <div className={`w-full aspect-video pt-3 px-3 ${thumbnailGradient}`}>
         {thumbnailUrl && (
           <img
             src={thumbnailUrl}
             alt={title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-full object-contain rounded-xl"
             loading="lazy"
           />
         )}
       </div>
-      <div className="p-5 space-y-4">
+      <div className="flex flex-col flex-1 p-5 space-y-4">
         <h3 className="text-xl font-semibold tracking-tight text-on-surface">{title}</h3>
-        <p className="text-sm text-on-surface-body leading-relaxed">{description}</p>
+        <p className="flex-1 text-sm text-on-surface-body leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-2">
           {techStack.map((tech) => (
             <ExpandableButton key={tech.label} icon={tech.icon} label={tech.label} />
