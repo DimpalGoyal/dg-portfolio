@@ -8,6 +8,12 @@ export { default as TypeScriptIcon } from "./tech/TypeScriptIcon";
 export { default as TailwindIcon } from "./tech/TailwindIcon";
 export { default as NodeIcon } from "./tech/NodeIcon";
 export { default as PythonIcon } from "./tech/PythonIcon";
+export { default as AxiosIcon } from "./tech/AxiosIcon";
+export { default as JavaScriptIcon } from "./tech/JavaScriptIcon";
+export { default as JwtIcon } from "./tech/JwtIcon";
+export { default as MongoIcon } from "./tech/MongoIcon";
+export { default as MotionIcon } from "./tech/MotionIcon";
+export { default as NextJsIcon } from "./tech/NextJsIcon";
 export { default as ChevronDownIcon } from "./ChevronDownIcon";
 export { default as CodeIcon } from "./CodeIcon";
 

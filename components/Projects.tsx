@@ -11,6 +11,12 @@ import {
   TailwindIcon,
   NodeIcon,
   PythonIcon,
+  AxiosIcon,
+  JavaScriptIcon,
+  JwtIcon,
+  MongoIcon,
+  MotionIcon,
+  NextJsIcon,
   CodeIcon,
 } from "@/components/icons";
 import type { ReactNode } from "react";
@@ -29,10 +35,16 @@ const techIcons: Record<string, ReactNode> = {
   node: <NodeIcon />,
   nodejs: <NodeIcon />,
   python: <PythonIcon />,
+  nextjs: <NextJsIcon />,
+  motion: <MotionIcon />,
+  mongodb: <MongoIcon />,
+  jwt: <JwtIcon />,
+  javascript: <JavaScriptIcon />,
+  axios: <AxiosIcon />,
 };
 
 function getIcon(techName: string): ReactNode {
-  const key = techName.toLowerCase().replace(/\s+/g, "");
+  const key = techName.toLowerCase().replace(/[\s.]+/g, "");
   return techIcons[key] ?? <CodeIcon />;
 }
 

@@ -69,6 +69,8 @@ function RotatingTitle({ titles, interval = 3000 }: Props) {
           animate="center"
           exit="exit"
           className="text-xl text-on-surface-muted font-normal tracking-wide"
+          whileHover={{ y: -2 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           {titles[index]}
         </motion.p>
