@@ -7,18 +7,20 @@ export const projectConfigs: UseProjectInput[] = [
     title: "Portfolio Website",
     description:
       "A personal portfolio built with React, TypeScript, and Tailwind CSS to showcase projects and skills.",
-    techStack: ["React", "TypeScript", "Tailwind CSS"],
+    techStack: ['nextjs', "React", "TypeScript", "Tailwind CSS", "motion"],
   },
   {
-    title: "E-Commerce Platform",
+    github: "https://github.com/DimpalGoyal/just-pay",
+    title: "Justpay",
     description:
-      "A full-stack e-commerce application with product management, cart functionality, and payment processing.",
-    techStack: ["React", "Node.js", "TypeScript"],
+      "A full-stack mini-paytm clone application where user can signup and send dummy money to another user. Created to understand how transaction happens in database and how backend commit and abort transaction ",
+    techStack: ["React", "Node.js", "mongodb", "Tailwind CSS", "motion", "jwt", "javascript","axios"],
   },
   {
-    title: "AI Chat Application",
+    github: "https://github.com/DimpalGoyal/pseudo-brain",
+    title: "Pseudo brain",
     description:
-      "A real-time chat application powered by AI, featuring natural language processing and contextual responses.",
-    techStack: ["Python", "React", "Tailwind CSS"],
+      "a full-stack brainly type application where user can mark here the important youtube video, web links and notes",
+    techStack: ["React", "Node.js", "mongodb", "Tailwind CSS", "motion", "jwt", "typescript","axios"],
   },
 ];
