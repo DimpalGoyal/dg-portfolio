@@ -48,8 +48,6 @@ function About() {
         >
           <motion.h1
             variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
             className={`text-6xl md:text-7xl font-bold tracking-tight ${theme === "dark" ? "text-gradient-dark" : "text-gradient-light"}`}
           >
             Dimpal Goyal

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/context/ThemeContext";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   title: "Dimpal Goyal | Full Stack & AI Developer",
   description:
     "Portfolio of Dimpal Goyal showcasing Full Stack Development, Backend Engineering, and Applied AI projects built with React, TypeScript, FastAPI, and Python.",
+  icons: { icon: "/icon.svg" },
   openGraph: {
     title: "Dimpal Goyal | Full Stack & AI Developer",
     description:
@@ -45,7 +47,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://api.microlink.io" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider><ErrorBoundary>{children}</ErrorBoundary></ThemeProvider>
       </body>
     </html>
   );
